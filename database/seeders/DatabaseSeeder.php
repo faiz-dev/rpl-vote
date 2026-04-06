@@ -47,9 +47,21 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $eventPublic->options()->createMany([
-            ['candidate_name' => 'Project Alpha', 'description' => 'AI based voting system'],
-            ['candidate_name' => 'Project Beta', 'description' => 'Blockchain ledger'],
-            ['candidate_name' => 'Project Gamma', 'description' => 'Quantum network'],
+            [
+                'candidate_name' => 'Project Alpha', 
+                'photo' => 'https://robohash.org/alpha.png?bgset=bg1',
+                'description' => "AI based voting system. This project aims to revolutionize user polling with predictive analytics and smooth user experience."
+            ],
+            [
+                'candidate_name' => 'Project Beta', 
+                'photo' => 'https://robohash.org/beta.png?bgset=bg1',
+                'description' => "Blockchain ledger system. Delivering fully transparent, immutable voting records decentralized across multiple public nodes."
+            ],
+            [
+                'candidate_name' => 'Project Gamma', 
+                'photo' => 'https://robohash.org/gamma.png?bgset=bg1',
+                'description' => "Quantum network infrastructure. Creating zero-latency global polling networks using the latest in quantum computing."
+            ],
         ]);
 
         // 5. Create Group-Restricted Event (Internal Division only)
@@ -64,8 +76,16 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $eventInternal->options()->createMany([
-            ['candidate_name' => 'David Manager', 'description' => '5 years experience'],
-            ['candidate_name' => 'Eve Coordinator', 'description' => 'Agile expert'],
+            [
+                'candidate_name' => 'David Manager', 
+                'photo' => 'https://robohash.org/david.png?set=set4',
+                'description' => "5 years of management experience. Certified Scrum Master and Agile evangelist."
+            ],
+            [
+                'candidate_name' => 'Eve Coordinator', 
+                'photo' => 'https://robohash.org/eve.png?set=set4',
+                'description' => "Senior developer with deep technical knowledge. Strong proponent of CI/CD pipelines."
+            ],
         ]);
         
         // 6. Cast some sample votes

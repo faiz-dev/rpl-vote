@@ -20,27 +20,26 @@
             
             <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 mb-8">
                 @foreach($event->options as $option)
-                    <div class="relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-indigo-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500 cursor-pointer">
+                    <label for="option-{{ $option->id }}" class="relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-indigo-400 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500 cursor-pointer transition-colors duration-150">
                         <div class="flex-shrink-0 w-16 h-16">
                             @if($option->photo)
-                                <img class="h-16 w-16 rounded-full object-cover" src="{{ Storage::url($option->photo) }}" alt="" />
+                                <img class="h-16 w-16 rounded-full object-cover" src="{{ Str::startsWith($option->photo, ['http://', 'https://']) ? $option->photo : Storage::url($option->photo) }}" alt="" />
                             @else
                                 <div class="h-16 w-16 rounded-full bg-gray-200 flex items-center justify-center text-gray-500">No Pic</div>
                             @endif
                         </div>
                         <div class="flex-1 min-w-0">
-                            <span class="absolute inset-0" aria-hidden="true"></span>
                             <div class="flex items-center">
                                 <input id="option-{{ $option->id }}" name="option_id" value="{{ $option->id }}" type="radio" required class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500 mr-3 z-10">
-                                <label for="option-{{ $option->id }}" class="text-sm font-medium text-gray-900 cursor-pointer">
+                                <span class="text-sm font-medium text-gray-900">
                                     {{ $option->candidate_name }}
-                                </label>
+                                </span>
                             </div>
                             @if($option->description)
                                 <p class="text-sm text-gray-500 truncate mt-1">{{ $option->description }}</p>
                             @endif
                         </div>
-                    </div>
+                    </label>
                 @endforeach
             </div>
 

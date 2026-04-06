@@ -27,6 +27,14 @@ class OptionsRelationManager extends RelationManager
                 TextInput::make('candidate_name')
                     ->required()
                     ->maxLength(255),
+                \Filament\Forms\Components\FileUpload::make('photo')
+                    ->image()
+                    ->directory('candidate-photos')
+                    ->nullable(),
+                \Filament\Forms\Components\Textarea::make('description')
+                    ->nullable()
+                    ->maxLength(1000)
+                    ->columnSpanFull(),
             ]);
     }
 
@@ -35,7 +43,12 @@ class OptionsRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('candidate_name')
             ->columns([
+                \Filament\Tables\Columns\ImageColumn::make('photo')
+                    ->circular(),
                 TextColumn::make('candidate_name')
+                    ->searchable(),
+                TextColumn::make('description')
+                    ->limit(50)
                     ->searchable(),
             ])
             ->filters([

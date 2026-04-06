@@ -29,7 +29,7 @@
                 <div class="flex justify-between items-end mb-1">
                     <span class="text-base font-medium text-gray-700 flex items-center">
                         @if($option->photo)
-                            <img class="h-8 w-8 rounded-full object-cover mr-2" src="{{ Storage::url($option->photo) }}" alt="" />
+                            <img class="h-8 w-8 rounded-full object-cover mr-2" src="{{ Str::startsWith($option->photo, ['http://', 'https://']) ? $option->photo : Storage::url($option->photo) }}" alt="" />
                         @endif
                         {{ $option->candidate_name }}
                         @if($isWinner)
